@@ -1,0 +1,83 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<title>gphoto2 wrapper</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.2.js"></script>
+	<script src="js/controller.js"></script>
+</head>
+
+<style>
+.ui-grid-a img {
+    width  : 90%;
+    height : auto;
+    border:1px #444444 solid;
+    box-shadow: 2px 2px 2px #888888;
+}
+</style>
+
+<body>
+
+
+<div data-role="page" id="camera">
+
+	<div data-role="header">
+		<h1 id="cameraName"></h1>
+		<a href="#gallery" class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-grid">Gallery
+		</a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content" style="text-align:center">
+
+		<button onclick="takePicture()" id="snap"><img src="aperture.png"></button>
+
+	</div><!-- /content -->
+
+
+</div>
+
+<div data-role="page" id="gallery">
+
+	<div data-role="header">
+		<a href="#camera" class="ui-btn-left ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-back">Camera
+		</a>
+		<h1 id="cameraName">Gallery</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+	
+	<div class="ui-grid-a my-breakpoint" id="galleryGrid"></div>
+	
+	<script type="text/html" id="galleryTemplate">
+		<div class="ui-block-@char" id="@id" style="text-align:center">
+		    <p><img src="@imageThumb" /></p>
+			<p>@imageName</p>
+			<p><a target="_blank" href="service.php?action=getImage&file=@imageName">Download Source</a></p>
+			<p><a href="javascript:deleteFile('@imageName');">Delete</a></p>
+		</div>
+	</script>	
+	
+	</div><!-- /content -->
+
+
+</div>
+
+
+<!-- Start of second page -->
+<div data-role="page" id="bar">
+
+	<div data-role="header">
+		<h1>Bar</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<p>I'm the second in the source order so I'm hidden when the page loads. I'm just shown if a link that references my id is beeing clicked.</p>
+		<p><a href="#foo">Back to foo</a></p>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+</body>
+</html>
