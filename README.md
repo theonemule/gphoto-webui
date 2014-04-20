@@ -44,6 +44,3 @@ php5 –S 0.0.0.0:8000
 8.) Point your browser to http://x.x.x.x:8000/index.html  x.x.x.x is the IP if your Raspberry Pi.
 
 9.) The WebUI is pretty much self explanatory. Having fun snapping pics!
-
-The Mobile WiFi might be challenge... It could always "tether" your RasPi to your phone or tablet, or your could set up your RasPi as a WiFi AP too. My phone and tablet both support tethering, so I'll just use that. 
-
