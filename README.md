@@ -3,10 +3,16 @@ gphoto-webui
 
 A PHP Web UI for gphoto2
 
-
 So maybe this isn’t the coolest Raspberry Pi hack. But it was fun to make.
 
-I’m using a RasPi model “B” (512 MB), but there’s no reason this wouldn’t work on model “A” or another box using Debian or Ubuntu Linux.
+The reason I wrote this was simple: I wanted a way to snap photos while I was in front of the camera from my smartphone. I could have bought a fancy dongle and installed an app on my phone to get the same sort of behavior, but I already had a Raspberry Pi, and thought, "What if I could use that little mini computer to control my DSLR? It's small, portable, and I can hook it up to my DSLR via WiFi..." 
+
+(The Mobile WiFi might be challenge... It could always "tether" your RasPi to your phone or tablet, or your could set up your RasPi as a WiFi AP too. My phone and tablet both support tethering, so I just use that.)
+
+Turns out, I can thanks to a project called gphoto. gphoto is a CLI tool for doing things on many different models of cameras from all kinds of manufaturers, including Canon, which I have. All it needed was a way to control gphoto from my smartphone. I cloud use an SSH shell or a remote desktop, but where's the fun in that? I applied some PHP, HTML, and JavaScript magic to make it all happen so any device with a web browser can control the camera.
+
+I’m using a RasPi model “B” (512 MB), but there’s no reason this wouldn’t work on model “A” or another box using Debian or Ubuntu Linux. I also have a WiFi adapter on my Raspber
+
 
 1.) Power up your Raspberry Pi. Pull up a Terminal, logon through SSH, or whatever you do to get to a console.
 
@@ -38,3 +44,6 @@ php5 –S 0.0.0.0:8000
 8.) Point your browser to http://x.x.x.x:8000/index.html  x.x.x.x is the IP if your Raspberry Pi.
 
 9.) The WebUI is pretty much self explanatory. Having fun snapping pics!
+
+The Mobile WiFi might be challenge... It could always "tether" your RasPi to your phone or tablet, or your could set up your RasPi as a WiFi AP too. My phone and tablet both support tethering, so I'll just use that. 
+
