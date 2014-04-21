@@ -1,6 +1,10 @@
 gphoto-webui
 ============
 
+Please checkout my blog post...Same info, but with pictures.
+
+http://techlife.blaize.net/2014/04/20/gphoto-webui-a-php-web-ui-for-gphoto2/
+
 The reason I wrote this was simple: I wanted a remote control for my DSLR. That way, I can snap photos while I was in front of the camera from my smartphone and review them after the fact. I’m somewhat of a shutter bug in addition to being a tech geek. I could have bought a fancy dongle and installed an app on my phone to get the same sort of behavior, but I already had a Raspberry Pi (RasPi), and thought, “What if I could use that little mini computer to control my DSLR, then use my phone as remote?”
 
 [Smartphone] ~~~WiFi~~~ [Raspberry PI] >—USB—< [Camera]
