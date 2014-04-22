@@ -20,6 +20,7 @@ Anyways, here’s how to make it work…
 2.) Update your Raspberry Pi
 
 sudo apt-get update
+
 sudo apt-get upgrade
 
 3.) Install the following packages.
