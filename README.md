@@ -35,6 +35,7 @@ Note: As of writing this, the gphoto2 package that comes with Raspian is a littl
 4.) Download the gphoto web ui from from github. (wget works if you're using a console.) You'll need to be in a writeable folder. I suggest your home folder.
 
 cd ~
+
 wget https://github.com/theonemule/gphoto-webui/archive/master.zip
 
 5.) Extract the files into a directory
