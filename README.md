@@ -43,6 +43,7 @@ wget https://github.com/theonemule/gphoto-webui/archive/master.zip
 unzip master.zip
 
 6.) In the console, cd to that directory
+
 cd gphoto-webui-master
 
 7.) Start the php server. This will bind the server to port 8000 on all IP’s.
