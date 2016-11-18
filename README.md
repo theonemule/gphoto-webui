@@ -1,8 +1,6 @@
 gphoto-webui
 ============
 
-Please checkout my blog post...Same info, but with pictures.
-
 The reason I wrote this was simple: I wanted a remote control for my DSLR. That way, I can snap photos while I was in front of the camera from my smartphone and review them after the fact. I’m somewhat of a shutter bug in addition to being a tech geek. I could have bought a fancy dongle and installed an app on my phone to get the same sort of behavior, but I already had a Raspberry Pi (RasPi), and thought, “What if I could use that little mini computer to control my DSLR, then use my phone as remote?” Something like this maybe?
 
 [Smartphone] ~~~WiFi~~~ [RasPI] >—USB—< [Camera]
@@ -56,3 +54,86 @@ php5 -S 0.0.0.0:8000
 9.) The WebUI is pretty much self explanatory. Hit the aperture icon to take a picture. View the images on the Gallery page. The images are captured in whatever format the camera is set to use, and this does support RAW images as well. Images are stored on the Raspberry Pi's SD card, not in the camera's memory.
 
 10.) The source images can be downloaded through the Web UI or can be FTP'd through an app like FileZilla over SFTP. The images are all stored in the "images" folder in relative to the root of the application. (i.e. ~/gphoto-webui-master/images) .
+
+
+###UPDATE:
+
+I initially wrote this little app as a way to take pictures remotely my standing in front of the camera. Lots of folks have downloaded and forked it for lots of other projects which is cool!
+
+I added a script called "poll.sh" that uses the [Motion](http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome) project for motion detection to trigger a camera. It uses a USB webcam as a motion detector. The webcam is ideal for this, rather than the DSLR because it is "always on" and doesn't use shutter clicks on a DSL between shots. When motion detects a difference between two shots, it writes a file to a specified directory. 
+
+The script herein polls that directory looking for files as an indicator that motion has been detected. when found, it triggers the DSLR to take a shot by calling the web service from ghpoto-webui. 
+
+After setting up the app as instructed above, setting up motion is pretty simple too.
+
+1.) Install motion (and wget if it isn't already installed).
+
+sudo apt-get install motion wget
+
+2.) Create a ramdisk -- This step is optional, but it saves IO operations on the CD card and makes motion perform better.
+
+sudo mount -t tmpfs -o size=256m tmpfs /mnt/ramdisk
+
+Change the size your liking. 256 megabytes is more than suffecient for this applicaiton though.
+
+Ifyou want to make the ramdisk mount at boot, add it to the fstab file.
+
+sudo nano /etc/fstab
+
+Add this to the buttom if the file.
+
+tmpfs /mnt/ramdisk tmpfs nodev,nosuid,noexec,nodiratime,size=256M   0 0
+
+3.) Configure motion:
+
+sudo nano /etc/motion/motion.conf
+
+Set the paramters as follows...
+
+*daemon on #default off (This allows the motion to run in the background)
+*framerate 15 #default 2 (increased framerate higher = more CPU usage)
+*width 640 #default 320 (changed width to match that of the webcam)
+*height 480 #default 240 (same as above but for height)
+*threshold 1500 #default 1500 (the motion detection sesitivity. Lower is more sensetive)
+*target_dir /mnt/ramdisk #default /tmp/motion (changed the directory where motion captures are stored. If you did step 2, then this will be wherever you mounted the ramdisk)
+
+4.) Turn on the motion daemon:
+
+sudo nano /etc/default/motion
+
+Set:
+
+start_motion_daemon=yes
+
+5.) Start Motion
+
+Ensure that your USB camera is attached to your Raspberry Pi
+
+service motion start
+
+6.) Edit the poll.sh
+
+cd /path/to/gphoto-webui
+
+nano poll.sh 
+
+Change the motion_dir to the folder motion writes images too.
+
+Ctrl + X to save.
+
+7.) Start poll.sh. It will start the php webserver and poll for changes made by motion.
+
+Once started, the script will be running. You should be able to motion activate your DSLR now by creating motion in front of your USB webcam
+
+To stop the services, simply:
+
+Stop the poll script:
+Ctrl + C to 
+
+Stop the PHP server:
+killall php
+
+Stop motion:
+service motion stop
+
+Well that it! enjoy the motion activated DSLR.
