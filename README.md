@@ -90,12 +90,12 @@ sudo nano /etc/motion/motion.conf
 
 Set the paramters as follows...
 
-*daemon on #default off (This allows the motion to run in the background)
-*framerate 15 #default 2 (increased framerate higher = more CPU usage)
-*width 640 #default 320 (changed width to match that of the webcam)
-*height 480 #default 240 (same as above but for height)
-*threshold 1500 #default 1500 (the motion detection sesitivity. Lower is more sensetive)
-*target_dir /mnt/ramdisk #default /tmp/motion (changed the directory where motion captures are stored. If you did step 2, then this will be wherever you mounted the ramdisk)
+* daemon on #default off (This allows the motion to run in the background)
+* framerate 15 #default 2 (increased framerate higher = more CPU usage)
+* width 640 #default 320 (changed width to match that of the webcam)
+* height 480 #default 240 (same as above but for height)
+* threshold 1500 #default 1500 (the motion detection sesitivity. Lower is more sensetive)
+* target_dir /mnt/ramdisk #default /tmp/motion (changed the directory where motion captures are stored. If you did step 2, then this will be wherever you mounted the ramdisk)
 
 4.) Turn on the motion daemon:
 
