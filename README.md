@@ -70,13 +70,13 @@ After setting up the app as instructed above, setting up motion is pretty simple
 
 sudo apt-get install motion wget
 
-2.) Create a ramdisk -- This step is optional, but it saves IO operations on the CD card and makes motion perform better.
+2.) Create a ramdisk -- This step is optional, but it saves IO operations on the SD card and makes motion perform better.
 
 sudo mount -t tmpfs -o size=256m tmpfs /mnt/ramdisk
 
 Change the size your liking. 256 megabytes is more than suffecient for this applicaiton though.
 
-Ifyou want to make the ramdisk mount at boot, add it to the fstab file.
+If you want to make the ramdisk mount at boot, add it to the fstab file.
 
 sudo nano /etc/fstab
 
